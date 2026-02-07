@@ -12,9 +12,9 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
 vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 
 vim.opt.ignorecase = true
@@ -36,16 +36,13 @@ vim.opt.timeoutlen = 500
 -- Globals
 vim.g.netrw_banner = 0
 
--- Color scheme
-vim.cmd.colorscheme("catppuccin")
-
 -- Keymaps
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 function map(mode, left, right)
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set(mode, left, right, opts)
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set(mode, left, right, opts)
 end
 
 map("n", "<leader>w", ":w<CR>")
@@ -66,3 +63,27 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
+
+-- Color scheme
+vim.cmd.colorscheme("catppuccin")
+
+-- LSPs
+vim.pack.add{
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+}
+
+vim.diagnostic.config({ virtual_text = true })
+
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" }
+      }
+    }
+  }
+})
+vim.lsp.enable('lua_ls')
+
+vim.lsp.enable('pyright')
+
