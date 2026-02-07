@@ -4,8 +4,6 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
-
-vim.opt.scroll = 10
 vim.opt.scrolloff = 5
 
 vim.opt.termguicolors = true
@@ -58,8 +56,8 @@ map({ "n", "v" }, "<leader>d", '"_d<CR>')
 map("n", "<leader>n", ":enew<CR>")
 map("n", "<leader>e", ":Ex<CR>")
 
-map("n", "<C-u>", "<C-u>zz")
-map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "10kzz")
+map("n", "<C-d>", "10jzz")
 
 map("n", "<leader>bn", ":bn<CR>")
 map("n", "<leader>bp", ":bp<CR>")
@@ -139,7 +137,7 @@ local conform = require("conform")
 conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = { "black" },
+		python = { "black", "isort" },
 	},
 })
 
