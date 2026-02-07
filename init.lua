@@ -2,19 +2,20 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.colorcolumn = "80"
-vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = '80'
+vim.opt.signcolumn = 'yes'
 
 vim.opt.scroll = 10
 vim.opt.scrolloff = 5
 
 vim.opt.termguicolors = true
-vim.opt.background = "dark"
+vim.opt.background = 'dark'
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
+vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 vim.opt.ignorecase = true
@@ -29,61 +30,106 @@ vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.mouse = "a"
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.mouse = 'a'
 vim.opt.timeoutlen = 500
 
 -- Globals
 vim.g.netrw_banner = 0
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- Keymaps
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
-function map(mode, left, right)
+local function map(mode, left, right)
   local opts = { noremap = true, silent = true }
   vim.keymap.set(mode, left, right, opts)
 end
 
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>q", ":q<CR>")
-map("n", "<leader>wq", ":wq<CR>")
-map("n", "<leader>n", ":enew<CR>")
-map("n", "<leader>e", ":Ex<CR>")
-map("n", "<leader>f", "mmggVG=`mzz") -- TODO: replace with real formatter
+map('n', '<leader>w', ':w<CR>')
+map('n', '<leader>q', ':q<CR>')
+map('n', '<leader>wq', ':wq<CR>')
+map({'n', 'v'}, '<leader>d', '"_d<CR>')
+map('n', '<leader>n', ':enew<CR>')
+map('n', '<leader>e', ':Ex<CR>')
+map('n', '<leader>f', 'mmggVG=`mzz') -- TODO: replace with real formatter
 
-map("n", "<leader>bn", ":bn<CR>")
-map("n", "<leader>bp", ":bp<CR>")
-map("n", "<leader>bd", ":bd<CR>")
-map("n", "<leader>bl", ":buffers<CR>")
+map('n', '<C-u>', '<C-u>zz')
+map('n', '<C-d>', '<C-d>zz')
 
-map("n", "<leader>s", ":vsplit<CR>")
-map("n", "<leader>c", ":close<CR>")
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+map('n', '<leader>bn', ':bn<CR>')
+map('n', '<leader>bp', ':bp<CR>')
+map('n', '<leader>bd', ':bd<CR>')
+
+map('n', '<leader>s', ':vsplit<CR>')
+map('n', '<leader>c', ':close<CR>')
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
 
 -- Color scheme
-vim.cmd.colorscheme("catppuccin")
+vim.pack.add{
+  { src = 'https://github.com/olimorris/onedarkpro.nvim' }
+}
+vim.cmd.colorscheme('onedark_vivid')
 
 -- LSPs
 vim.pack.add{
   { src = 'https://github.com/neovim/nvim-lspconfig' },
 }
 
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config(
+  {
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    severity_sort = true
+  }
+)
 
 vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim" }
+        globals = { 'vim' }
       }
     }
   }
 })
-vim.lsp.enable('lua_ls')
 
-vim.lsp.enable('pyright')
+--vim.lsp.config('pyright', {
+--  settings = {
+--    python = {
+--      analysis = { typeCheckingMode = 'basic' }
+--    }
+--  }
+--})
+
+vim.lsp.enable({ 'lua_ls', 'pyright', 'ts_ls'})
+
+-- Telescope
+vim.pack.add{
+  { src = 'https://github.com/nvim-lua/plenary.nvim' },
+  { src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
+  { src = 'https://github.com/nvim-telescope/telescope.nvim' }
+}
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+-- Treesitter
+vim.pack.add{
+  {
+    src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate'
+  }
+}
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'javascript', 'lua', 'python', 'typescript', 'vim' },
+  callback = function() vim.treesitter.start() end,
+})
 
