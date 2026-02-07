@@ -21,7 +21,7 @@ vim.opt.breakindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -33,7 +33,9 @@ vim.opt.backup = false
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
+
 vim.opt.timeoutlen = 500
+vim.opt.updatetime = 300
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
@@ -73,7 +75,7 @@ map("n", "<C-l>", "<C-w>l")
 vim.pack.add({
 	{ src = "https://github.com/olimorris/onedarkpro.nvim" },
 })
-vim.cmd.colorscheme("onedark_vivid")
+vim.cmd.colorscheme("vaporwave")
 
 -- Language servers
 vim.pack.add({
@@ -98,7 +100,7 @@ vim.lsp.config("lua_ls", {
 })
 vim.lsp.enable({ "lua_ls", "pyright", "ts_ls" })
 
--- Finder
+-- Fuzzy finder
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
@@ -111,7 +113,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
--- Syntax highlighting/folding
+-- Syntax highlighting
 vim.pack.add({
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
