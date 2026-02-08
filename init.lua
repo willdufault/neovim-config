@@ -1,82 +1,84 @@
 -- Options
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.colorcolumn = "80"
-vim.opt.signcolumn = "yes"
-vim.opt.scrolloff = 5
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
+vim.o.colorcolumn = "80"
+vim.o.signcolumn = "yes"
+vim.o.scrolloff = 5
 
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
+vim.o.termguicolors = true
+vim.o.background = "dark"
 
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.autoindent = true
+vim.o.smartindent = true
+vim.o.linebreak = true
+vim.o.breakindent = true
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.incsearch = true
-vim.opt.hlsearch = false
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
+vim.o.hlsearch = false
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.laststatus = 3
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.laststatus = 3
 
-vim.opt.undofile = true
-vim.opt.swapfile = false
-vim.opt.backup = false
+vim.o.undofile = true
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.confirm = true
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.mouse = "a"
+vim.o.clipboard = "unnamedplus"
+vim.o.mouse = "a"
 
-vim.opt.timeoutlen = 500
-vim.opt.updatetime = 300
-
-vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+vim.o.timeoutlen = 300
+vim.o.updatetime = 300
 
 -- Globals
-vim.g.netrw_banner = 0
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
+vim.g.netrw_banner = 0
+vim.g.have_nerd_font = true
+
+-- Diagnostics
+vim.diagnostic.config({
+	update_in_insert = false,
+	signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+    }
+  },
+	severity_sort = true,
+	virtual_text = true,
+	underline = { severity = vim.diagnostic.severity.ERROR },
+	jump = { float = true },
+})
 
 -- Keymaps
-local function map(mode, left, right)
+local function keymap(mode, left, right)
 	local opts = { noremap = true, silent = true }
 	vim.keymap.set(mode, left, right, opts)
 end
 
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>q", ":q<CR>")
-map("n", "<leader>wq", ":wq<CR>")
-map({ "n", "v" }, "<leader>d", '"_d<CR>')
-map("n", "<leader>n", ":enew<CR>")
-map("n", "<leader>e", ":Ex<CR>")
+keymap({ "n", "v" }, "<leader>d", '"_d<CR>')
+keymap("n", "<leader>n", ":enew<CR>")
+keymap("n", "<leader>e", ":Ex<CR>")
 
-map("n", "<C-u>", "10kzz")
-map("n", "<C-d>", "10jzz")
+keymap("n", "<C-u>", "10kzz")
+keymap("n", "<C-d>", "10jzz")
 
-map("n", "<leader>bn", ":bn<CR>")
-map("n", "<leader>bp", ":bp<CR>")
-map("n", "<leader>bd", ":bd<CR>")
-
-map("n", "<leader>s", ":vsplit<CR>")
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-
-map("n", "<leader>t", ":split<CR> :term<CR>")
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-
+keymap("n", "<leader>s", ":vsplit<CR>")
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-l>", "<C-w>l")
 
 -- Color scheme
 vim.pack.add({
@@ -113,13 +115,6 @@ vim.lsp.enable({
 	"yamlls",
 })
 
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	severity_sort = true,
-})
-
 -- Fuzzy finder
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -133,7 +128,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
--- Syntax highlighting & folding
+-- Syntax highlighting
 vim.pack.add({
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -165,7 +160,7 @@ conform.setup({
 	},
 })
 
-map("n", "<leader>f", function()
+keymap("n", "<leader>f", function()
 	conform.format({ async = true })
 end)
 
