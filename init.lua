@@ -71,6 +71,13 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
+map("n", "<leader>t", ":split<CR> :term<CR>")
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
+
+
 -- Color scheme
 vim.pack.add({
 	{ src = "https://github.com/olimorris/onedarkpro.nvim" },
@@ -96,6 +103,7 @@ vim.lsp.config("lua_ls", {
 	},
 })
 vim.lsp.enable({
+	"clangd",
 	"lua_ls",
 	"pyright",
 	"snyk_ls",
@@ -134,7 +142,7 @@ vim.pack.add({
 	},
 })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "javascript", "lua", "python", "typescript", "vim" },
+	pattern = { "c", "javascript", "lua", "python", "typescript", "vim" },
 	callback = function()
 		vim.treesitter.start()
 		vim.wo.foldmethod = "expr"
@@ -150,9 +158,10 @@ vim.pack.add({
 local conform = require("conform")
 conform.setup({
 	formatters_by_ft = {
+		["*"] = { "prettier" },
+		c = { "clang-format" },
 		lua = { "stylua" },
 		python = { "black", "isort" },
-		["*"] = { "prettier" },
 	},
 })
 
