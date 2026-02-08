@@ -79,16 +79,13 @@ vim.cmd.colorscheme("vaporwave")
 
 -- Language servers
 vim.pack.add({
+	{ src = "https://github.com/mason-org/mason.nvim" },
+})
+require("mason").setup()
+
+vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
-
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	severity_sort = true,
-})
-
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -98,7 +95,22 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.lsp.enable({ "lua_ls", "pyright", "ts_ls" })
+vim.lsp.enable({
+	"lua_ls",
+	"pyright",
+	"snyk_ls",
+	"tailwindcss",
+	"ts_ls",
+	"vimls",
+	"yamlls",
+})
+
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	severity_sort = true,
+})
 
 -- Fuzzy finder
 vim.pack.add({
@@ -113,7 +125,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
--- Syntax highlighting
+-- Syntax highlighting & folding
 vim.pack.add({
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -140,6 +152,7 @@ conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "black", "isort" },
+		["*"] = { "prettier" },
 	},
 })
 
@@ -147,7 +160,7 @@ map("n", "<leader>f", function()
 	conform.format({ async = true })
 end)
 
--- Code comments
+-- Comments
 vim.pack.add({
 	{ src = "https://github.com/tpope/vim-commentary" },
 })
