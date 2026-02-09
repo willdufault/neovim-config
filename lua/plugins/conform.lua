@@ -8,7 +8,7 @@ return {
 					["*"] = { "prettier" },
 					c = { "clang-format" },
 					lua = { "stylua" },
-					python = { "black", "isort" },
+					python = { "isort", "black" },
 				},
 			})
 			vim.keymap.set("n", "<leader>f", function()

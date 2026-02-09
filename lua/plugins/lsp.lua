@@ -10,6 +10,7 @@ return {
 				settings = {
 					Lua = {
 						diagnostics = {
+              -- Ignore global vim warning
 							globals = { "vim" },
 						},
 					},
