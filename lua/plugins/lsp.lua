@@ -6,6 +6,7 @@ return {
 	config = function()
 		local servers = {
 			clangd = {},
+      jsonls = {},
 			lua_ls = {
 				settings = {
 					Lua = {
