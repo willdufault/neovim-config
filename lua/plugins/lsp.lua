@@ -20,7 +20,41 @@ return {
 			tailwindcss = {},
 			ts_ls = {},
 			vimls = {},
-			yamlls = {},
+			yamlls = {
+				settings = {
+					yaml = {
+						-- AWS Cloudformation tags
+						customTags = {
+							"!Base64",
+							"!Cidr",
+							"!And",
+							"!Equals",
+							"!If",
+							"!Not",
+							"!Or",
+							"!FindInMap",
+							"!ForEach",
+							"!GetAtt",
+							"!GetAZs",
+							"!ImportValue",
+							"!Join",
+							"!Length",
+							"!Select",
+							"!Split",
+							"!Sub",
+							"!ToJsonString",
+							"!Transform",
+							"!Ref",
+							"!Contains",
+							"!EachMemberEquals",
+							"!EachMemberIn",
+							"!RefAll",
+							"!ValueOf",
+							"!ValueOfAll",
+						},
+					},
+				},
+			},
 		}
 		for server, opts in pairs(servers) do
 			vim.lsp.config(server, opts)
