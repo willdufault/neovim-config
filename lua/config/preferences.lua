@@ -35,7 +35,7 @@ vim.opt.confirm = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 vim.opt.updatetime = 300
 
 -- Globals
