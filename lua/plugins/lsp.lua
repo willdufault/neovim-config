@@ -66,10 +66,13 @@ return {
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
-				vim.keymap.set("n", "gh", function()
+				local function map(mode, left, right)
+					vim.keymap.set("n", left, right, { buffer = args.buf })
+				end
+				map("n", "gd", vim.lsp.buf.definition)
+				map("n", "gh", function()
 					vim.lsp.buf.hover({ border = "rounded" })
-				end, { buffer = args.buf })
+				end)
 			end,
 		})
 	end,
