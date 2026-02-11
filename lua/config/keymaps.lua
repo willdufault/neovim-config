@@ -15,3 +15,8 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
+
+-- Copy absolute path to clipboard
+map("n", "<leader>cp", function()
+	vim.fn.setreg("+", vim.fn.expand("%:p"))
+end)
