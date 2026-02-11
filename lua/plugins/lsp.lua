@@ -6,12 +6,12 @@ return {
 	config = function()
 		local servers = {
 			clangd = {},
-      jsonls = {},
+			jsonls = {},
 			lua_ls = {
 				settings = {
 					Lua = {
 						diagnostics = {
-              -- Ignore global vim warning
+							-- Ignore global vim warning
 							globals = { "vim" },
 						},
 					},
@@ -58,9 +58,19 @@ return {
 				},
 			},
 		}
+
 		for server, opts in pairs(servers) do
 			vim.lsp.config(server, opts)
 		end
 		vim.lsp.enable(vim.tbl_keys(servers))
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(args)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
+				vim.keymap.set("n", "gh", function()
+					vim.lsp.buf.hover({ border = "rounded" })
+				end, { buffer = args.buf })
+			end,
+		})
 	end,
 }
