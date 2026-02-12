@@ -3,7 +3,9 @@ local function map(mode, left, right)
 	vim.keymap.set(mode, left, right, opts)
 end
 
-map({ "n", "v" }, "<leader>d", '"_d<CR>')
+map({ "n", "v" }, "<leader>d", '"_d')
+map({ "n", "v" }, "<leader>c", '"_c')
+
 map("n", "<leader>n", ":enew<CR>")
 map("n", "<leader>e", ":Ex<CR>")
 
