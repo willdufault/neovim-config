@@ -31,12 +31,10 @@ return {
 				callback = function()
 					-- Enable syntax highlighting
 					vim.treesitter.start()
-
 					-- Enable smart folding
-					vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-					vim.wo[0][0].foldmethod = "expr"
-					vim.wo[0][0].foldlevel = 99
-
+					vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+					vim.wo.foldmethod = "expr"
+					vim.wo.foldlevel = 99
 					-- Enable smart indentation
 					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 				end,
