@@ -2,10 +2,30 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} },
+		{
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			opts = {
+				ensure_installed = {
+					"clangd",
+					"css-lsp", -- css
+					"html-lsp", -- html
+					"json-lsp", -- jsonls
+					"lua-language-server", -- lua_ls
+					"pyright",
+					"snyk-ls", -- snyk_ls
+					"tailwindcss-language-server", -- tailwindcss
+					"typescript-language-server", -- ts_ls
+					"vim-language-server", -- vimls
+					"yaml-language-server", -- yamlls
+				},
+			},
+		},
 	},
 	config = function()
 		local servers = {
 			clangd = {},
+			css = {},
+			html = {},
 			jsonls = {},
 			lua_ls = {
 				settings = {
