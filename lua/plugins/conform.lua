@@ -4,10 +4,17 @@ return {
 		opts = {},
 		config = function()
 			require("conform").setup({
+				formatters = {
+					prettier = {
+						append_args = {
+							"--no-semi",
+						},
+					},
+				},
 				formatters_by_ft = {
 					c = { "clang-format" },
-          css = { "prettier" },
-          html = { "prettier" },
+					css = { "prettier" },
+					html = { "prettier" },
 					javascript = { "prettier" },
 					javascriptreact = { "prettier" },
 					json = { "prettier" },
