@@ -7,6 +7,7 @@ return {
 				formatters_by_ft = {
 					c = { "clang-format" },
 					javascript = { "prettier" },
+					javascriptreact = { "prettier" },
 					json = { "prettier" },
 					lua = { "stylua" },
 					python = { "isort", "black" },
