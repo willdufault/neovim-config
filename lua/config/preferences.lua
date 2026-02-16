@@ -11,6 +11,7 @@ vim.opt.showbreak = "↪ "
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
+vim.opt.showmode = false
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -46,7 +47,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 vim.g.netrw_banner = 0
-vim.g.netrw_bufsettings = "nomodifiable nomodified readonly nobuflisted number"
+vim.g.netrw_bufsettings = "noma nomod ro nobl nu"
 
 -- Diagnostics
 vim.diagnostic.config({
