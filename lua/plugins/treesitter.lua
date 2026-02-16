@@ -29,6 +29,8 @@ return {
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = filetypes,
 				callback = function()
+          -- Enable syntax highlighting
+          vim.treesitter.start()
 					-- Enable smart folding
 					vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 					vim.wo.foldmethod = "expr"
