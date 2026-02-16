@@ -6,6 +6,9 @@ vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 5
 
+vim.opt.wrap = true
+vim.opt.showbreak = "↪ "
+
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
