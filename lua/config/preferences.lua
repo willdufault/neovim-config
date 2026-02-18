@@ -45,26 +45,24 @@ vim.opt.timeoutlen = 500
 vim.opt.updatetime = 300
 
 -- Globals
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 vim.g.netrw_banner = 0
 vim.g.netrw_bufsettings = "noma nomod ro nobl nu"
 
 -- Diagnostics
 vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.INFO] = " ",
-			[vim.diagnostic.severity.HINT] = " ",
-		},
-	},
-	update_in_insert = false,
-	severity_sort = true,
-	virtual_text = true,
-	underline = { severity = vim.diagnostic.severity.ERROR },
-	jump = { float = true },
-	float = { border = "rounded" },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+    },
+  },
+  update_in_insert = false,
+  severity_sort = true,
+  virtual_text = true,
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  jump = { float = true },
+  float = { border = "rounded" },
 })
