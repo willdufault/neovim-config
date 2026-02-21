@@ -1,6 +1,6 @@
 local function map(mode, left, right)
-	local opts = { noremap = true, silent = true }
-	vim.keymap.set(mode, left, right, opts)
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set(mode, left, right, opts)
 end
 
 map({ "n", "v" }, "<leader>d", '"_d')
@@ -20,5 +20,5 @@ map("n", "<C-l>", "<C-w>l")
 
 -- Copy absolute path to clipboard
 map("n", "<leader>cp", function()
-	vim.fn.setreg("+", vim.fn.expand("%:p"))
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
 end)
