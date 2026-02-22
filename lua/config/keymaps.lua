@@ -12,7 +12,7 @@ map("n", "<leader>e", ":Ex<CR>")
 map({ "n", "v" }, "<C-u>", "10kzz")
 map({ "n", "v" }, "<C-d>", "10jzz")
 
-map("n", "<leader>s", ":vsplit<CR>")
+map("n", "<leader>sv", ":vsplit<CR>")
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
