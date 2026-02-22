@@ -2,7 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("config.preferences")
-require("config.autocommands")
 require("config.lazy")
+require("config.preferences")
 require("config.keymaps")
