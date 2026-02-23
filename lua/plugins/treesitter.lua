@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { "nvim-treesitter/nvim-treesitter-context" },
     lazy = false,
     build = ":TSUpdate",
     config = function()
