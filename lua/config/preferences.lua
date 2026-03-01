@@ -8,6 +8,7 @@ vim.opt.scrolloff = 5
 
 vim.opt.wrap = true
 vim.opt.showbreak = "↪ "
+vim.opt.diffopt:append("followwrap")
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
@@ -68,8 +69,8 @@ vim.diagnostic.config({
 })
 
 -- Autocommands
+-- Highlight text on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
     vim.hl.on_yank()
   end,
