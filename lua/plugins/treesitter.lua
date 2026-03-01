@@ -31,11 +31,13 @@ return {
         pattern = filetypes,
         callback = function()
           -- Enable syntax highlighting
-          vim.treesitter.start()
+          -- vim.treesitter.start()
           -- Enable smart folding
           vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
           vim.wo.foldmethod = "expr"
           vim.wo.foldlevel = 99
+          -- Enable smart indentation
+          -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
     end,
