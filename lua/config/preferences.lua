@@ -9,6 +9,8 @@ vim.opt.scrolloff = 5
 vim.opt.wrap = true
 vim.opt.showbreak = "↪ "
 vim.opt.diffopt:append("followwrap")
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
