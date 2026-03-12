@@ -21,6 +21,7 @@ return {
         },
       },
     },
+    "hrsh7th/cmp-nvim-lsp"
   },
   config = function()
     local servers = {
@@ -69,7 +70,10 @@ return {
       },
     }
 
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
     for server, opts in pairs(servers) do
+      opts.capabilities = capabilities
       vim.lsp.config(server, opts)
     end
     vim.lsp.enable(vim.tbl_keys(servers))
