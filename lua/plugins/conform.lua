@@ -1,42 +1,40 @@
 return {
-  {
-    "stevearc/conform.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function()
-      require("conform").setup({
-        formatters = {
-          prettier = {
-            append_args = {
-              "--no-semi",
-              "--trailing-comma=none",
-            },
-          },
-          stylua = {
-            append_args = {
-              "--indent-type=Spaces",
-              "--indent-width=2",
-              "--column-width=80",
-            },
+  "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  opts = {},
+  config = function()
+    require("conform").setup({
+      formatters = {
+        prettier = {
+          append_args = {
+            "--no-semi",
+            "--trailing-comma=none",
           },
         },
-        formatters_by_ft = {
-          c = { "clang-format" },
-          css = { "prettier" },
-          html = { "prettier" },
-          javascript = { "prettier" },
-          javascriptreact = { "prettier" },
-          json = { "prettier" },
-          lua = { "stylua" },
-          python = { "isort", "black" },
-          typescript = { "prettier" },
-          typescriptreact = { "prettier" },
-          yaml = { "prettier" },
+        stylua = {
+          append_args = {
+            "--indent-type=Spaces",
+            "--indent-width=2",
+            "--column-width=80",
+          },
         },
-      })
-      vim.keymap.set("n", "<leader>f", function()
-        require("conform").format({ async = true, lsp_format = "fallback" })
-      end)
-    end,
-  },
+      },
+      formatters_by_ft = {
+        c = { "clang-format" },
+        css = { "prettier" },
+        html = { "prettier" },
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        json = { "prettier" },
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        yaml = { "prettier" },
+      },
+    })
+    vim.keymap.set("n", "<leader>f", function()
+      require("conform").format({ async = true, lsp_format = "fallback" })
+    end)
+  end,
 }

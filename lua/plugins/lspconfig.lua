@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
     {
@@ -21,7 +21,7 @@ return {
         },
       },
     },
-    "hrsh7th/cmp-nvim-lsp"
+    "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
     local servers = {
