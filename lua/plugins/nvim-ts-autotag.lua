@@ -1,3 +1,7 @@
 return {
-  { "windwp/nvim-ts-autotag", event = "VeryLazy", opts = {} },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
