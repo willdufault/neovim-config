@@ -21,4 +21,5 @@ map("n", "<C-l>", "<C-w>l")
 -- Copy absolute path to clipboard
 map("n", "<leader>cp", function()
   vim.fn.setreg("+", vim.fn.expand("%:p"))
+  print("Copied path to clipboard")
 end)
