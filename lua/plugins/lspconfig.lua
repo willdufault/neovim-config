@@ -12,7 +12,7 @@ return {
           "html-lsp", -- html
           "json-lsp", -- jsonls
           "lua-language-server", -- lua_ls
-          "pyright",
+          "ruff",
           "snyk-ls", -- snyk_ls
           "tailwindcss-language-server", -- tailwindcss
           "typescript-language-server", -- ts_ls
@@ -39,7 +39,7 @@ return {
           },
         },
       },
-      pyright = {},
+      ruff = {},
       snyk_ls = {},
       tailwindcss = {},
       ts_ls = {},

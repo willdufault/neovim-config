@@ -18,7 +18,6 @@ return {
             "--column-width=80",
           },
         },
-        ruff = {}
       },
       formatters_by_ft = {
         c = { "clang-format" },
@@ -28,7 +27,7 @@ return {
         javascriptreact = { "prettier" },
         json = { "prettier" },
         lua = { "stylua" },
-        python = { "ruff" },
+        python = { "ruff_format" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
