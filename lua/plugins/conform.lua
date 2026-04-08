@@ -27,7 +27,7 @@ return {
         javascriptreact = { "prettier" },
         json = { "prettier" },
         lua = { "stylua" },
-        python = { "ruff_format", "isort" },
+        python = { "isort", "ruff_format" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
