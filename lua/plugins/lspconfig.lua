@@ -64,6 +64,7 @@ return {
               "!Join sequence",
               "!Split sequence",
               "!ImportValue",
+              "!Condition",
             },
           },
         },

@@ -19,7 +19,7 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
 -- Copy absolute path to clipboard
-map("n", "<leader>cp", function()
+map("n", "<leader>ap", function()
   local path = vim.fn.expand("%:p")
   -- Use Windows path
   path, _ = path.gsub(path, "/", "\\")
