@@ -24,5 +24,5 @@ map("n", "<leader>ap", function()
   -- Use Windows path
   path, _ = path.gsub(path, "/", "\\")
   vim.fn.setreg("+", path)
-  print("Copied path to clipboard")
+  print("Copied absolute path to clipboard")
 end)
