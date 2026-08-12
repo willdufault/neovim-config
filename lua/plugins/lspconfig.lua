@@ -10,6 +10,7 @@ return {
           "clangd",
           "css-lsp", -- css
           "html-lsp", -- html
+          "jinja-lsp", -- jinja_lsp
           "json-lsp", -- jsonls
           "lua-language-server", -- lua_ls
           "pyright",

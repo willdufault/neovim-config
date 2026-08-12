@@ -10,6 +10,7 @@ return {
       "diff",
       "html",
       "javascript",
+      "jinja",
       "json",
       "jsx",
       "lua",
@@ -25,6 +26,13 @@ return {
       "vimdoc",
       "yaml",
     }
+    vim.filetype.add({
+      extension = {
+        j2 = "jinja",
+        jinja = "jinja",
+        jinja2 = "jinja",
+      },
+    })
     require("nvim-treesitter").install(filetypes)
     vim.api.nvim_create_autocmd("FileType", {
       pattern = filetypes,
