@@ -38,6 +38,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.confirm = true
+vim.opt.shadafile = "NONE"
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
