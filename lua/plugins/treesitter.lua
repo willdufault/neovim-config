@@ -28,6 +28,7 @@ return {
     }
     vim.filetype.add({
       extension = {
+        guard = "terraform",
         j2 = "jinja",
         jinja = "jinja",
         jinja2 = "jinja",
